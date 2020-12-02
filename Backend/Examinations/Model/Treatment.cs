@@ -64,10 +64,5 @@ namespace Backend.Examinations.Model
             return Type == TreatmentType.LabTest;
         }
 
-        public bool IsPatient(string id)
-        {
-            return ExaminationSurgery.MedicalRecord.PatientId.Equals(id);
-        }
-
     }
 }

@@ -18,12 +18,14 @@ namespace Repository.RoomRepository
    public class DepartmentRepository : JSONRepository<Department, int>,
         IDepartmentRepository, ObjectComplete<Department>
     {
+        public IHospitalRepository hospitalRepository;
 
         private const string NOT_FOUND = "Department with ID number {0} does not exist!";
         private const string ALREADY_EXISTS = "Department with ID number {0} already exists!";
 
-        public DepartmentRepository(Stream<Department> stream) : base(stream, "Department")
+        public DepartmentRepository(IHospitalRepository hospitalRepository, Stream<Department> stream) : base(stream, "Department")
         {
+            this.hospitalRepository = hospitalRepository;
         }
 
         public new Department Create(Department entity)
@@ -60,10 +62,12 @@ namespace Repository.RoomRepository
 
         public void SetMissingValues(Department entity)
         {
+            entity.Hospital = new Hospital();
         }
 
         public void CompleteObject(Department entity)
         {
+            entity.Hospital = hospitalRepository.GetObject(entity.Hospital.Id);
         }
 
         public Department GetByName(string name) => GetAll().SingleOrDefault(entity => entity.Name.Equals(name));

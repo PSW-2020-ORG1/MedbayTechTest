@@ -15,10 +15,9 @@ namespace Backend.Examinations.Repository
 {
    public interface IExaminationSurgeryRepository : IRepository<ExaminationSurgery,int>
    {
-          IEnumerable<ExaminationSurgery> GetAllBy(Doctor doctor);
+      IEnumerable<ExaminationSurgery> GetAllBy(Doctor doctor);
       
-          IEnumerable<ExaminationSurgery> GetAllBy(MedicalRecord record);
-          ExaminationSurgery UpdateTreatment(ExaminationSurgery examinationSurgery, Treatment treatment);
-          IEnumerable<ExaminationSurgery> GetReportFor(string idPatient);
+      IEnumerable<ExaminationSurgery> GetAllBy(MedicalRecord record);
+      ExaminationSurgery UpdateTreatment(ExaminationSurgery examinationSurgery, Treatment treatment);
     }
 }

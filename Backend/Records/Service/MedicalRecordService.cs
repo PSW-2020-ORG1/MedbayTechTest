@@ -21,10 +21,6 @@ namespace Service.MedicalRecordService
             this.medicalRecordRepository = medicalRecordRepository;
         }
 
-        public MedicalRecordService()
-        {
-        }
-
         public MedicalRecord CreateNewRecord(MedicalRecord medicalRecord) => 
             medicalRecordRepository.Create(medicalRecord);
 
@@ -42,7 +38,7 @@ namespace Service.MedicalRecordService
 
 
         public MedicalRecord GetRecordBy(Patient patient) => 
-            medicalRecordRepository.GetRecordBy(patient); 
+            medicalRecordRepository.GetRecordBy(patient);
 
         public MedicalRecord UpdateAllergies(Allergens allergy, MedicalRecord medicalRecord)
         {

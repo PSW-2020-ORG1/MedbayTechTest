@@ -1,23 +1,23 @@
 export class AllFeedback {
 
-    public id : number;
-    public date : Date;
-    public additionalNotes : string;
-    public approved : Boolean;
-    public name : string;
-    public surname : string;
-    public anonymous : Boolean;
-    public allowedForPublishing : Boolean;
+    public Id : number;
+    public Date : Date;
+    public AdditionalNotes : string;
+    public Approved : Boolean;
+    public Name : string;
+    public Surname : string;
+    public Anonymous : Boolean;
+    public AllowedForPublishing : Boolean;
 
     constructor(id : number, date : Date, additionalNotes : string,approved : Boolean, name : string, surname : string, anonymous : Boolean, allowedForPublishing : Boolean) {
-        this.id = id;
-        this.date = date;
-        this.additionalNotes = additionalNotes;
-        this.approved = approved;
-        this.name = name;
-        this.surname = surname;
-        this.anonymous = anonymous;
-        this.allowedForPublishing = allowedForPublishing;
+        this.Id = id;
+        this.Date = date;
+        this.AdditionalNotes = additionalNotes;
+        this.Approved = approved;
+        this.Name = name;
+        this.Surname = surname;
+        this.Anonymous = anonymous;
+        this.AllowedForPublishing = allowedForPublishing;
     }
 
 }

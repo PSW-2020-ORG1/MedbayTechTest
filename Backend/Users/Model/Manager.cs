@@ -5,7 +5,7 @@
  ***********************************************************************/
 
 using System;
-using Model.Users;
+using ZdravoKorporacija.Model.Users;
 
 namespace Model.Users
 {

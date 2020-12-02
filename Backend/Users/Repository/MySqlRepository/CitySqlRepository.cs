@@ -1,5 +1,4 @@
-﻿using Model;
-using Model.Users;
+﻿using Model.Users;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,6 @@ namespace Backend.Users.Repository.MySqlRepository
     class CitySqlRepository : MySqlrepository<City, int>,
         ICityRepository
     {
-        public CitySqlRepository(MySqlContext context) : base(context) { }
         public bool CheckIfExists(City city)
         {
             throw new NotImplementedException();

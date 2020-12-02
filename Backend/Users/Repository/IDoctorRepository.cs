@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Backend.Users.Repository
 {
-    public interface IDoctorRepository : IRepository<Doctor,string>
+    public interface IDoctorRepository : ICreate<Doctor>, IGetAll<Doctor>
     {
         public IEnumerable<Doctor> GetDoctorsFromDepartment(Department department);
         public IEnumerable<Doctor> GetAllDoctorsBySpecialization(Specialization specialization);

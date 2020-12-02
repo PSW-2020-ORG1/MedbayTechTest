@@ -13,6 +13,5 @@ namespace GraphicEditor
     /// </summary>
     public partial class App : Application
     {
-        
     }
 }

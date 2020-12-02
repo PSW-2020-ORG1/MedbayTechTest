@@ -21,41 +21,16 @@ namespace GraphicEditor
     /// </summary>
     public partial class HospitalMap : Page
     {
-        MainPage page;
-        public HospitalMap(MainPage mainPage)
+        public HospitalMap()
         {
             InitializeComponent();
-            page = mainPage;
         }
-        private void TransitionAnimation()
+        public HospitalMap(MainWindow mainWindow)
         {
-            Storyboard storyboard = new Storyboard();
-            DoubleAnimation doubleAnimation = new DoubleAnimation();
-            doubleAnimation.From = 0;
-            doubleAnimation.To = 1;
-            doubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
-            storyboard.Children.Add(doubleAnimation);
-            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath(Canvas.OpacityProperty));
-            Storyboard.SetTargetName(doubleAnimation, page.MainFrame.Name);
-            storyboard.Begin(page);
+            InitializeComponent();
+            window = mainWindow;
         }
-
-        private void ShowBuilding1FloorPlan(object sender, MouseButtonEventArgs e)
-        {
-            page.MainFrame.Content = new Building1FloorPlan(page);
-            page.comboBoxH1.SelectedIndex = 0;
-            page.SetActiveUserControl(page.legenda);
-            TransitionAnimation();
-
-        }
-
-        private void ShowBuilding2FloorPlan(object sender, MouseButtonEventArgs e)
-        {
-            page.MainFrame.Content = new Building2FloorPlan(page);
-            page.comboBoxH2.SelectedIndex = 0;
-            page.SetActiveUserControl(page.legenda);
-            TransitionAnimation();
-        }
+        MainWindow window;
 
         private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -104,6 +79,38 @@ namespace GraphicEditor
                 element.Height = element.Height * scale_Height;
 
             }
+        }
+
+        private void ShowBuilding1FloorPlan(object sender, MouseButtonEventArgs e)
+        {
+            window.MainFrame.Content = new Building1FloorPlan(window);
+            window.comboBoxH1.SelectedIndex = 0;
+            window.SetActiveUserControl(window.legenda);
+            Storyboard storyboard = new Storyboard();
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.From = 0;
+            doubleAnimation.To = 1;
+            doubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+            storyboard.Children.Add(doubleAnimation);
+            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath(Canvas.OpacityProperty));
+            Storyboard.SetTargetName(doubleAnimation, window.MainFrame.Name);
+            storyboard.Begin(window);
+        }
+
+        private void ShowBuilding2FloorPlan(object sender, MouseButtonEventArgs e)
+        {
+            window.MainFrame.Content = new Building2FloorPlan(window);
+            window.comboBoxH2.SelectedIndex = 0;
+            window.SetActiveUserControl(window.legenda);
+            Storyboard storyboard = new Storyboard();
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.From = 0;
+            doubleAnimation.To = 1;
+            doubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+            storyboard.Children.Add(doubleAnimation);
+            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath(Canvas.OpacityProperty));
+            Storyboard.SetTargetName(doubleAnimation, window.MainFrame.Name);
+            storyboard.Begin(window);
         }
     }
 }

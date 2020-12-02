@@ -20,6 +20,9 @@ namespace Backend.Medications.Model
         [ForeignKey("MedicalRecord")]
         public int MedicalRecordId { get; set; }
         public virtual MedicalRecord MedicalRecord { get; set; }
+        [ForeignKey("Medication")]
+        public int MedicationId { get; set; }
+        public virtual Medication Medication { get; set; }
 
         public Allergens() { }
         public Allergens(string allergen)

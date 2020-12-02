@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model.Users
+namespace ZdravoKorporacija.Model.Users
 {
     public enum Gender
     {

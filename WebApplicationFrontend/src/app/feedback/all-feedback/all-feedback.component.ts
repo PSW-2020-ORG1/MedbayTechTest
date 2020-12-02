@@ -17,7 +17,6 @@ export class AllFeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAllFeedback();
-    console.log(this.allFeedback[0]);
   }
 
   loadAllFeedback() {

@@ -7,41 +7,26 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Backend.General.Model;
 using Backend.Utils;
 
 namespace Model.Users
 {
-   public class InsurancePolicy : IIdentifiable<string>
+   public class InsurancePolicy
     {
         [Key]
-        public string Id { get; set; }
-        public string Company { get; set; }
-
+        public string Id { get;  set; }
+        public string Company { get;  set; }
         [NotMapped]
         public Period Period { get; set; }
 
-        public DateTime StartTime { get; set; }
-
-        public DateTime EndTime { get; set; }
-
         public InsurancePolicy() { }
-        public InsurancePolicy(string id, string company, DateTime startDate, DateTime endDate)
+        public InsurancePolicy(string id, string company, Period period)
         {
             Id = id;
             Company = company;
-            StartTime = startDate;
-            EndTime = endDate;
+            Period = period;
         }
 
-        public string GetId()
-        {
-            return Id;
-        }
-
-        public void SetId(string id)
-        {
-            Id = id;
-        }
+    
     }
 }

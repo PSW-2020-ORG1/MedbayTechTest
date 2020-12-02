@@ -10,13 +10,11 @@ using System.Collections.Generic;
 
 namespace Backend.Users.Repository.MySqlRepository
 {
-   public interface IFeedbackRepository : ICreate<Feedback>, IGetAll<Feedback> 
+   public interface IFeedbackRepository : ICreate<Feedback>, IGetAll<Feedback>
    {
         public IEnumerable<Feedback> GetAllApprovedFeedback();
         public bool UpdateStatus(int feedbackId, bool status);
         public int GetLastId();
-        bool CheckIfExists(Feedback feedback);
-
 
     }
 }
