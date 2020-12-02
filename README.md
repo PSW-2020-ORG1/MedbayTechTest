@@ -8,3 +8,7 @@ Software Design class project
 | Vlajkov Jelena          | Tamindžija Nemanja | Župunski Radovan       | Čivčić Ognjen  |
 | Arađanin Stefan         | Antonić Nikola     | Pekez Marko            | Vujić Bojan    |
 | Vojvodić Danica         | Pjevalica Bojana   | Ivošević Jovan         | Marković Filip |
+
+
+
+
