@@ -24,7 +24,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - mysql-data:/var/lib/mysql/data
+      - mysql-data:/var/lib/mysql
 
   Backend:
     image: stefan7/testback:latest
@@ -39,5 +39,5 @@ services:
     #  - Backend
       - mysql
     ports:
-      - "4020:5000"
+      - "4200:5000"
   

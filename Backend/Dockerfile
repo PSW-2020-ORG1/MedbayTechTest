@@ -6,6 +6,4 @@ COPY ./Backend/bin/Release/netcoreapp3.1/ .
 
 EXPOSE 5000
 
-#ENTRYPOINT ["dotnet", "Backend.dll"]
-
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet Backend.dll
+ENTRYPOINT ["dotnet", "Backend.dll"]
