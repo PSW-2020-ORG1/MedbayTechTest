@@ -36,7 +36,7 @@ services:
   WebApplication:
     image: stefan7/testweb:latest
     depends_on:
-      - Backend
+    #  - Backend
       - mysql
     ports:
       - "4020:5000"
