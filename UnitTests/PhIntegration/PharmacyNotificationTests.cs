@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MedbayTechUnitTests.PhIntegrationTests
 {
-    class PharmacyNotificationTests
+    public class PharmacyNotificationTests
     {
     }
 }

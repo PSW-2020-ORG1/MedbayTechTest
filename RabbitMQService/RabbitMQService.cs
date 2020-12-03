@@ -26,7 +26,6 @@ namespace RabbitMQService
         private IPharmacyNotificationService _notificationService;
 
         public RabbitMQService(IPharmacyNotificationService notificationService)
-        //public RabbitMQService()
         {
             _notificationService = notificationService;
         }
