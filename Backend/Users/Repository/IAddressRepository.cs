@@ -12,7 +12,7 @@ namespace Backend.Users.Repository.MySqlRepository
 {
    public interface IAddressRepository : ICreate<Address>, IGetAll<Address>, IGet<Address, int>
    {
-      IEnumerable<Address> GetAdressesByCity(City city);
+      IEnumerable<Address> GetAdressesByCity(Model.Users.City city);
       bool CheckIfExists(Address address);
         Address GetExistentAddress(Address address);
     }

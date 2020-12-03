@@ -58,18 +58,14 @@ namespace Backend.Users.Repository.MySqlRepository
             var allSurveys = stream.GetAll().ToList();
             return allSurveys.Any(item => item.Id == id);
         }
-        
+
         public void CompleteObject(Survey survey)
         {
-            //survey.Patient = (Patient)userRepository.GetObject(survey.Patient.Username);
+            survey.Patient = (Patient)userRepository.GetObject(survey.Patient.Username);
         }
         public void SetMissingValues(Survey survey)
         {
-            //survey.Patient = new Patient();
-        }
-        int ISurveyRepository.GetLastId()
-        {
-            throw new NotImplementedException();
+            survey.Patient = new Patient();
         }
     }
 }

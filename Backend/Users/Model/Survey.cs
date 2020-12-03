@@ -4,8 +4,6 @@
 // Purpose: Definition of Class Survey
 
 using Backend.General.Model;
-using Backend.Users.Model;
-using Model.Schedule;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,24 +15,25 @@ namespace Model.Users
    {
         [Key]
         public int Id { get; set; }
-        public DateTime Date { get; set; }
-        [ForeignKey("Appointment")]
-        public int AppointmentId { get; set; }
-        public virtual Appointment Appointment { get; set; }
-        public List<int> SurveyQuestions { get; set; }
-        public List<Grade> SurveyAnswers { get; set; }
+        public DateTime Date { get; protected set; }
+        public string AdditionalNotes { get; protected set; }
+        public Grade AverageGrade { get; protected set; }
+        [ForeignKey("Patient")]
+        public string PatientId { get; protected set; }
+        public virtual Patient Patient { get; set; }
+        public virtual List<SurveyQuestion> SurveyQuestions { get; set; }
         
       
         public Survey() { }
 
-        public Survey(int id, DateTime date, Appointment appointment)
+        public Survey(int id, DateTime date, string additionalNotes, Grade averageGrade, Patient patient)
         {
-            Id = id;
             Date = date;
-            SurveyQuestions = new List<int>();
-            SurveyAnswers = new List<Grade>();
-            Appointment = appointment;
-            AppointmentId = appointment.Id;
+            AdditionalNotes = additionalNotes;
+            AverageGrade = averageGrade;
+            SurveyQuestions = new List<SurveyQuestion>();
+            Patient = patient;
+            PatientId = patient.Id;
         }
 
         public int GetId()

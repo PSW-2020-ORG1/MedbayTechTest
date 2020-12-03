@@ -11,6 +11,5 @@ namespace Backend.Users.Repository.MySqlRepository
 {
    public interface ISurveyRepository : ICreate<Survey>, IGetAll<Survey>
    {
-        public int GetLastId();
-    }
+   }
 }
