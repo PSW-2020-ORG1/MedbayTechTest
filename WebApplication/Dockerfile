@@ -8,5 +8,5 @@ COPY ./WebApplication/bin/Release/netcoreapp3.1/ .
 
 #ENTRYPOINT ["dotnet", "WebApplication.dll"]
 
-EXPOSE 4020
+EXPOSE 4200
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet WebApplication.dll

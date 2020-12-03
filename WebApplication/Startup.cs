@@ -84,12 +84,16 @@ namespace WebApplication
                 endpoints.MapControllers();
             });
 
+            /*
+
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
                 Path.Combine(Directory.GetCurrentDirectory(), "Resources")),
                 RequestPath = "/Resources"
             });
+
+            */
         }
     }
 }
