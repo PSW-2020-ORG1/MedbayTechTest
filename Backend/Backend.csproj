@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="4.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <Compile Remove="Users\dsadsa\**" />
     <EmbeddedResource Remove="Users\dsadsa\**" />
