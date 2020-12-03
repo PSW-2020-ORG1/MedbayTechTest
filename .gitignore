@@ -30,7 +30,6 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
-
 # Pharmacy Integration
 GeneratedUsageReports/
 node_modules/
