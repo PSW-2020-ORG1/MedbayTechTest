@@ -12,8 +12,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphicEditorWebService", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQService", "RabbitMQService\RabbitMQService.csproj", "{3F354CF2-6B07-47A9-B2CE-9DC7B71C3A47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmacyIntegration", "PharmacyIntegration\PharmacyIntegration.csproj", "{855FDD19-FA79-495B-A594-97BD02E9636B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
