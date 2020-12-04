@@ -24,23 +24,18 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
 
-  Backend:
-    image: stefan7/testback:latest
-    restart: always
-    depends_on:
-      - mysql
-    ports:
-      - 5000:5000
 
   WebApplication:
     image: stefan7/testweb:latest
     depends_on:
-    #  - Backend
+      #- Backend
       - mysql
+    expose:
+      - "80"
     ports:
-      - 4200:5000
+      - "8080:80"
   

@@ -4,6 +4,4 @@ WORKDIR /app
 
 COPY ./Backend/bin/Release/netcoreapp3.1/ .
 
-EXPOSE 5000
-
 ENTRYPOINT ["dotnet", "Backend.dll"]
