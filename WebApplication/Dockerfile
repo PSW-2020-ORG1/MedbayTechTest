@@ -35,8 +35,8 @@ RUN dotnet restore "WebApplication/WebApplication.csproj" && \
 FROM build AS publish
 ENV PATH $PATH:/root/.dotnet/tools
 RUN dotnet tool install -g dotnet-ef --version 3.1.0 && \
-    dotnet publish "PrimerWebApi/PrimerWebApi.csproj" -c Release -o /app/publish && \
-    dotnet-ef migrations script -p "PrimerWebApi/PrimerWebApi.csproj" -o /app/sql/init.sql
+    dotnet publish "WebApplication/WebApplication.csproj" -c Release -o /app/publish && \
+    dotnet-ef migrations script -p "WebApplication/WebApplication.csproj" -o /app/sql/init.sql
 
  
 FROM base AS final
@@ -44,4 +44,4 @@ WORKDIR /app
 COPY --from=publish /app .
 WORKDIR /app/publish
 VOLUME /app/sql
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet PrimerWebApi.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet WebApplication.dll
