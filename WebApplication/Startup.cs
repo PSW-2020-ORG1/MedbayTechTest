@@ -94,7 +94,7 @@ namespace WebApplication
                 endpoints.MapControllers();
             });
 
-            /*
+            
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<MySqlContext>();
@@ -105,7 +105,7 @@ namespace WebApplication
                 databaseCreator.CreateTables();
             }
 
-            */
+            
             /*
 
             app.UseStaticFiles(new StaticFileOptions
