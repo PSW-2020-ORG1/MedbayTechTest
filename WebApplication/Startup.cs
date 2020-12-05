@@ -68,6 +68,8 @@ namespace WebApplication
             services.AddDbContext<MySqlContext>(options =>
             options.UseMySql(CreateConnectionStringFromEnvironment(),
             b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+
+            services.AddScoped<MySqlContext>();
             
 
 
