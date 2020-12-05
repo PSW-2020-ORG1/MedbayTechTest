@@ -104,7 +104,7 @@ namespace WebApplication
                 RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
                 //RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
 
-                databaseCreator.CreateTables();
+                //databaseCreator.CreateTables();
             }
 
             
