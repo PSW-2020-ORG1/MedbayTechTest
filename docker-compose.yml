@@ -2,14 +2,12 @@ version: "3.8"
 
 volumes:
   mysql-data:
+  web-sql:
 
 networks:
   demo:
     name: demo
     driver: nat
-
-
-
 
 services:
   mysql:
@@ -27,15 +25,26 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+      - web-sql:/docker-entrypoint-initdb.d/
 
 
   WebApplication:
     image: stefan7/testweb:latest
+    container_name: web
+    restart: on-failure
+    networks:
+      - demo
     depends_on:
-      #- Backend
       - mysql
+    volumes:
+      - web-sql:/app/sql
+    environment:
+      DATABASE_USERNAME: demo
+      DATABASE_PASSWORD: root
+      DATABASE_HOST: mysql
+      DATABASE_SCHEMA: newdb
     expose:
       - "80"
     ports:
-      - "8080:80"
+      - "4200:80"
   

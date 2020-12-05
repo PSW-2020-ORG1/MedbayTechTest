@@ -20,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Model;
 using Newtonsoft.Json;
 using WebApplication.MailService;
+using System.Reflection;
 
 namespace WebApplication
 {
@@ -64,6 +65,11 @@ namespace WebApplication
             //services.RegisterMySQLDataServices(Configuration);
             services.AddDbContext<MySqlContext>();
 
+            services.AddDbContext<MySqlContext>(options =>
+            options.UseMySql(CreateConnectionStringFromEnvironment(),
+            b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+            
+
 
 
         }
@@ -88,6 +94,7 @@ namespace WebApplication
                 endpoints.MapControllers();
             });
 
+            /*
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<MySqlContext>();
@@ -97,6 +104,8 @@ namespace WebApplication
 
                 databaseCreator.CreateTables();
             }
+
+            */
             /*
 
             app.UseStaticFiles(new StaticFileOptions
@@ -107,6 +116,17 @@ namespace WebApplication
             });
 
             */
+        }
+
+        private string CreateConnectionStringFromEnvironment()
+        {
+            string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
+            string port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "3306";
+            string database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "newdb";
+            string user = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "root";
+            string password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "root";
+
+            return $"server={server};port={port};database={database};user={user};password={password};";
         }
     }
 }
