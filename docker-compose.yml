@@ -2,7 +2,7 @@ version: "3.8"
 
 volumes:
   mysql-data:
-  web-sql:
+  #web-sql:
 
 networks:
   demo:
@@ -17,34 +17,41 @@ services:
     networks:
       - demo
     environment:
-      MYSQL_DATABASE: newdb
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: "newdb"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
+      MYSQL_ROOT_PASSWORD: "root"
+
+
    # ports:
     #  - "3306:80"
     volumes:
-      - mysql-data:/var/lib/mysql
-      - web-sql:/docker-entrypoint-initdb.d/
+      - mysql-data:/var/lib/mysql:rw
+      #- web-sql:/docker-entrypoint-initdb.d/
 
 
   WebApplication:
-    image: stefan7/testweb:latest
+    image: test-web-img
     container_name: web
     restart: on-failure
     networks:
       - demo
     depends_on:
       - mysql
-    volumes:
-      - web-sql:/app/sql
     environment:
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: root
-      DATABASE_HOST: mysql
-      DATABASE_SCHEMA: newdb
-    expose:
-      - "80"
+      DATABASE_USERNAME: "root"
+      DATABASE_PASSWORD: "root"
+      DATABASE_HOST: "mysql"
+      DATABASE_SCHEMA: "newdb"   
     ports:
-      - "8080:80"
+      - "8080:8080"
+
+  WebApplicationFrontend:
+    image: test-web-front-img
+    container_name: web-front
+    restart: on-failure
+    ports:
+      - "4200:4200"
+    links:
+      - WebApplication
   

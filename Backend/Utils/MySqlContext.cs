@@ -88,20 +88,31 @@ namespace Model
         public MySqlContext() { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             /*This is not good solution, must be refactored*/
-            //optionsBuilder.UseMySql(@"server=" + mySqlHostAddress + ";port=" + mySqlConnectionPort + ";database=" + mySqlDatabaseName + ";uid=" + mySqlConnectionUid + ";password=" + mySqlConnectionPassword);
-            //optionsBuilder.UseLazyLoadingProxies(true);
+            optionsBuilder.UseMySql(CreateConnectionStringFromEnvironment());
+            optionsBuilder.UseLazyLoadingProxies(true);
 
             // NOTE(Jovan): When using Backend DB inside project, create appsettings.json inside
             // that project
 
-        IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
-                optionsBuilder.UseMySql($"Server={mySqlHostAddress};port={mySqlConnectionPort};Database={mySqlDatabaseName};user={mySqlConnectionUid};password={mySqlConnectionPassword}").UseLazyLoadingProxies();
+      //  IConfigurationRoot configuration = new ConfigurationBuilder()
+     //           .SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
+      //          optionsBuilder.UseMySql($"Server={mySqlHostAddress};port={mySqlConnectionPort};Database={mySqlDatabaseName};user={mySqlConnectionUid};password={mySqlConnectionPassword}").UseLazyLoadingProxies();
 
 
         }
+        private string CreateConnectionStringFromEnvironment()
+        {
+            string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
+            string port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "3306";
+            string database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "newdb";
+            string user = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "root";
+            string password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "root";
 
+            return $"server={server};port={port};database={database};user={user};password={password}";
+            
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Period>().HasNoKey();

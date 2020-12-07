@@ -1,0 +1,40 @@
+services:
+
+  servers:
+    build: ./MQuince
+    image: mquince
+    container_name: mquince
+    restart: on-failure
+    networks:
+      - demo
+    ports:
+      - 8081:5000
+    environment:
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: user
+      DATABASE_DOMAIN: mysql
+      DATABASE_SCHEMA: mquince
+    depends_on: 
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    networks:
+      - demo
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_DATABASE: mquince
+    volumes:
+      - mysql-data:/var/lib/mysql:rw
+
+volumes:
+  mysql-data:
+
+networks:
+  demo:
+    name: demo
+    driver: bridge

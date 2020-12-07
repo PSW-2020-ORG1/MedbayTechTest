@@ -21,6 +21,8 @@ using Model;
 using Newtonsoft.Json;
 using WebApplication.MailService;
 using System.Reflection;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
 
 namespace WebApplication
 {
@@ -32,7 +34,6 @@ namespace WebApplication
         }
 
         public IConfiguration Configuration { get; }
-        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -58,7 +59,18 @@ namespace WebApplication
 
             services.AddTransient<IMailService, MailService.MailService>();
 
-            
+            services.AddDbContextPool<MySqlContext>( 
+            options => options.UseMySql(CreateConnectionStringFromEnvironment(),
+
+                mySqlOptions =>
+                {
+                    mySqlOptions.ServerVersion(new Version(5, 7, 17), ServerType.MySql)
+                    .EnableRetryOnFailure(
+                    maxRetryCount: 10,
+                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                    errorNumbersToAdd: null); 
+                }
+            ));
 
             //add cors package
             services.AddCors();
@@ -66,13 +78,10 @@ namespace WebApplication
             services.AddDbContext<MySqlContext>();
 
             services.AddDbContext<MySqlContext>(options =>
-            options.UseMySql(CreateConnectionStringFromEnvironment(),
-            b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+                options.UseMySql(CreateConnectionStringFromEnvironment(),
+                    b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
 
             services.AddScoped<MySqlContext>();
-            
-
-
 
         }
 
@@ -95,19 +104,18 @@ namespace WebApplication
             {
                 endpoints.MapControllers();
             });
-
             
+            /*
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<MySqlContext>();
                 context.Database.Migrate();
-                RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
-                //RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
 
+                RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
+                
                 //databaseCreator.CreateTables();
             }
-
-            
+            */
             /*
 
             app.UseStaticFiles(new StaticFileOptions
@@ -118,6 +126,8 @@ namespace WebApplication
             });
 
             */
+
+
         }
 
         private string CreateConnectionStringFromEnvironment()
@@ -128,7 +138,8 @@ namespace WebApplication
             string user = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "root";
             string password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "root";
 
-            return $"server={server};port={port};database={database};user={user};password={password};";
+            return $"server={server};port={port};database={database};user={user};password={password}";
+            ;
         }
     }
 }
