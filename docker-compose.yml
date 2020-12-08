@@ -21,17 +21,11 @@ services:
       MYSQL_USER: "root"
       MYSQL_PASSWORD: "root"
       MYSQL_ROOT_PASSWORD: "root"
-
-
-   # ports:
-    #  - "3306:80"
     volumes:
       - mysql-data:/var/lib/mysql:rw
-      #- web-sql:/docker-entrypoint-initdb.d/
-
 
   WebApplication:
-    image: test-web-img
+    image: stefan7/testweb:latest
     container_name: web
     restart: on-failure
     networks:
@@ -47,9 +41,11 @@ services:
       - "8080:8080"
 
   WebApplicationFrontend:
-    image: test-web-front-img
+    image: stefan7/testwebfront:latest
     container_name: web-front
     restart: on-failure
+    networks:
+      - demo
     ports:
       - "4200:4200"
     links:
