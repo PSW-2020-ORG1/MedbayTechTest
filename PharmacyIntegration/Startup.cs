@@ -29,6 +29,8 @@ namespace PharmacyIntegration
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+
             services.AddDbContext<MySqlContext>();
 
             services.AddTransient<IPharmacyRepository, PharmacySqlRepository>();
@@ -45,6 +47,14 @@ namespace PharmacyIntegration
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSpaStaticFiles(options => options.RootPath = "vueclient/dist");
+
+            services.AddDbContext<MySqlContext>();
+
+           services.AddDbContext<MySqlContext>(options =>
+                options.UseMySql(CreateConnectionStringFromEnvironment(),
+                    b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+
+            services.AddScoped<MySqlContext>();
 
 
             services.AddCors();
@@ -87,6 +97,18 @@ namespace PharmacyIntegration
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .SetIsOriginAllowed(origin => true)); // allow any origin
+        }
+
+        private string CreateConnectionStringFromEnvironment()
+        {
+            string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
+            string port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "3306";
+            string database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "newdb";
+            string user = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "root";
+            string password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "root";
+
+            return $"server={server};port={port};database={database};user={user};password={password}";
+            ;
         }
     }
 }
