@@ -10,7 +10,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 WORKDIR /app
 
-COPY package.json /app/
+COPY ./package.json /app/package.json
 RUN npm install
 RUN npm install -g @angular/cli@7.3.9
 
