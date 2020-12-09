@@ -14,12 +14,14 @@ using Microsoft.Extensions.Hosting;
 using Model;
 using PharmacyIntegration.Repository;
 using PharmacyIntegration.Service;
+using System;
+using System.Reflection;
 
 namespace PharmacyIntegration
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup ( IConfiguration configuration )
         {
             Configuration = configuration;
         }
@@ -27,10 +29,8 @@ namespace PharmacyIntegration
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices ( IServiceCollection services )
         {
-            
-
             services.AddDbContext<MySqlContext>();
 
             services.AddTransient<IPharmacyRepository, PharmacySqlRepository>();
@@ -50,21 +50,19 @@ namespace PharmacyIntegration
 
             services.AddDbContext<MySqlContext>();
 
-           services.AddDbContext<MySqlContext>(options =>
-                options.UseMySql(CreateConnectionStringFromEnvironment(),
-                    b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+            services.AddDbContext<MySqlContext>(options =>
+                 options.UseMySql(CreateConnectionStringFromEnvironment(),
+                     b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
 
             services.AddScoped<MySqlContext>();
 
-
             services.AddCors();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure ( IApplicationBuilder app, IWebHostEnvironment env )
         {
-            if (env.IsDevelopment())
+            if ( env.IsDevelopment() )
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -87,7 +85,7 @@ namespace PharmacyIntegration
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "client-app";
-                if (env.IsDevelopment())
+                if ( env.IsDevelopment() )
                 {
                     // Launch development server for Vue.js
                     spa.UseVueDevelopmentServer();
@@ -99,7 +97,7 @@ namespace PharmacyIntegration
                 .SetIsOriginAllowed(origin => true)); // allow any origin
         }
 
-        private string CreateConnectionStringFromEnvironment()
+        private string CreateConnectionStringFromEnvironment ( )
         {
             string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
             string port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "3306";
