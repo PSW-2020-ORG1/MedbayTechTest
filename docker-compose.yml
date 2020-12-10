@@ -25,7 +25,7 @@ services:
       - mysql-data:/var/lib/mysql:rw
 
   WebApplication:
-    image: stefan7/testweb:latest
+    image: web
     container_name: web
     restart: on-failure
     networks:
@@ -41,7 +41,7 @@ services:
       - "8080:8080"
 
   WebApplicationFrontend:
-    image: stefan7/testwebfront:latest
+    image: front
     container_name: web-front
     restart: on-failure
     networks:

@@ -78,8 +78,7 @@ namespace WebApplication
             services.AddDbContext<MySqlContext>();
 
             services.AddDbContext<MySqlContext>(options =>
-                options.UseMySql(CreateConnectionStringFromEnvironment(),
-                    b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+                options.UseMySql(CreateConnectionStringFromEnvironment()));
 
             services.AddScoped<MySqlContext>();
 
@@ -104,29 +103,19 @@ namespace WebApplication
             {
                 endpoints.MapControllers();
             });
-            
-            /*
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<MySqlContext>();
-                context.Database.Migrate();
 
-                RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
-                
-                //databaseCreator.CreateTables();
+
+            if (!IsLocalServer())
+            {
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<MySqlContext>();
+
+                    RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
+                    if (!databaseCreator.HasTables())
+                        databaseCreator.CreateTables();
+                }
             }
-            */
-            /*
-
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                Path.Combine(Directory.GetCurrentDirectory(), "Resources")),
-                RequestPath = "/Resources"
-            });
-
-            */
-
 
         }
 
@@ -140,6 +129,13 @@ namespace WebApplication
 
             return $"server={server};port={port};database={database};user={user};password={password}";
             ;
+        }
+
+        private bool IsLocalServer()
+        {
+            string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
+            return server.Equals("localhost");
+
         }
     }
 }
