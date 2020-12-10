@@ -50,4 +50,19 @@ services:
       - "4200:4200"
     links:
       - WebApplication
-  
+
+  PhIntegration:
+    image: ph
+    container_name: ph_adapters
+    restart: on-failure
+    networks: 
+      - demo
+    ports: 
+      - "8081:8080"
+    depends_on: 
+      - mysql
+    environment:
+      DATABASE_USERNAME: "root"
+      DATABASE_PASSWORD: "root"
+      DATABASE_HOST: "mysql"
+      DATABASE_SCHEMA: "newdb"   

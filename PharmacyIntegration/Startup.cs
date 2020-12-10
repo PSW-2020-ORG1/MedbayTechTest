@@ -8,6 +8,8 @@ using Backend.Reports.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -51,8 +53,7 @@ namespace PharmacyIntegration
             services.AddDbContext<MySqlContext>();
 
             services.AddDbContext<MySqlContext>(options =>
-                 options.UseMySql(CreateConnectionStringFromEnvironment(),
-                     b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+                 options.UseMySql(CreateConnectionStringFromEnvironment()));
 
             services.AddScoped<MySqlContext>();
 
@@ -95,6 +96,19 @@ namespace PharmacyIntegration
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .SetIsOriginAllowed(origin => true)); // allow any origin
+
+
+            if (!IsLocalServer())
+            {
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<MySqlContext>();
+
+                    RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
+                    if (!databaseCreator.HasTables())
+                        databaseCreator.CreateTables();
+                }
+            }
         }
 
         private string CreateConnectionStringFromEnvironment ( )
@@ -107,6 +121,12 @@ namespace PharmacyIntegration
 
             return $"server={server};port={port};database={database};user={user};password={password}";
             ;
+        }
+
+        private bool IsLocalServer()
+        {
+            string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
+            return server.Equals("localhost");
         }
     }
 }
