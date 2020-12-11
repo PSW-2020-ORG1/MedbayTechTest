@@ -25,7 +25,7 @@ services:
       - mysql-data:/var/lib/mysql:rw
 
   WebApplication:
-    image: web
+    image: stefan7/testweb:latest
     container_name: web
     restart: on-failure
     networks:
