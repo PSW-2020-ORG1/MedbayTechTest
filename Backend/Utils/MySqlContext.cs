@@ -100,8 +100,6 @@ namespace Model
             {
                 optionsBuilder.UseNpgsql(CreateConnectionStringFromEnvironment());
             }
-
-        
         }
 
 

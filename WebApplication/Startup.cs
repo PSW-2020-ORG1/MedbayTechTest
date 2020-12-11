@@ -59,35 +59,29 @@ namespace WebApplication
 
             services.AddTransient<IMailService, MailService.MailService>();
 
-            services.AddDbContextPool<MySqlContext>( 
-            options => options.UseMySql(CreateConnectionStringFromEnvironment(),
+            if (!IsPostgresDatabase())
+            {
+                services.AddDbContextPool<MySqlContext>(
+                options => options.UseMySql(CreateConnectionStringFromEnvironment(),
 
-                mySqlOptions =>
-                {
-                    mySqlOptions.ServerVersion(new Version(5, 7, 17), ServerType.MySql)
-                    .EnableRetryOnFailure(
-                    maxRetryCount: 10,
-                    maxRetryDelay: TimeSpan.FromSeconds(30),
-                    errorNumbersToAdd: null); 
-                }
-            ));
-
-            //add cors package
-            services.AddCors();
-            //services.RegisterMySQLDataServices(Configuration);
-            services.AddDbContext<MySqlContext>();
-
-            if (!IsPostgresDatabase()) 
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.ServerVersion(new Version(5, 7, 17), ServerType.MySql)
+                        .EnableRetryOnFailure(
+                        maxRetryCount: 10,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        errorNumbersToAdd: null);
+                    }
+                ));
                 services.AddDbContext<MySqlContext>(options =>
                     options.UseMySql(CreateConnectionStringFromEnvironment()));
+            }
             else
             {
                 services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
                 services.AddDbContext<MySqlContext>(options => options.UseNpgsql(CreateConnectionStringFromEnvironment()));
             }
-
             services.AddScoped<MySqlContext>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
