@@ -77,8 +77,14 @@ namespace WebApplication
             //services.RegisterMySQLDataServices(Configuration);
             services.AddDbContext<MySqlContext>();
 
-            services.AddDbContext<MySqlContext>(options =>
-                options.UseMySql(CreateConnectionStringFromEnvironment()));
+            if (!IsPostgresDatabase()) 
+                services.AddDbContext<MySqlContext>(options =>
+                    options.UseMySql(CreateConnectionStringFromEnvironment()));
+            else
+            {
+                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                services.AddDbContext<MySqlContext>(options => options.UseNpgsql(CreateConnectionStringFromEnvironment()));
+            }
 
             services.AddScoped<MySqlContext>();
 
@@ -151,6 +157,12 @@ namespace WebApplication
             string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
             return server.Equals("localhost");
 
+        }
+
+        private bool IsPostgresDatabase()
+        {
+            string url = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "localhost";
+            return !url.Equals("localhost");
         }
     }
 }

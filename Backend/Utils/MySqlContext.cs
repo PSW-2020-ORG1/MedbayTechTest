@@ -18,6 +18,7 @@ using PharmacyIntegration.Model;
 using Backend.Reports.Model;
 using Backend.Records.Model.Enums;
 using Backend.Examinations.Model.Enums;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Model
 {
@@ -88,20 +89,28 @@ namespace Model
         public MySqlContext() { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!IsPostgresDatabase())
+            {
+                optionsBuilder.UseMySql(CreateConnectionStringFromEnvironment());
+                optionsBuilder.UseLazyLoadingProxies(true);
 
-            /*This is not good solution, must be refactored*/
-            optionsBuilder.UseMySql(CreateConnectionStringFromEnvironment());
-            optionsBuilder.UseLazyLoadingProxies(true);
+            }
+            else
+            {
+                optionsBuilder.UseNpgsql(CreateConnectionStringFromEnvironment());
+            }
 
-            // NOTE(Jovan): When using Backend DB inside project, create appsettings.json inside
-            // that project
-
-      //  IConfigurationRoot configuration = new ConfigurationBuilder()
-     //           .SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
-      //          optionsBuilder.UseMySql($"Server={mySqlHostAddress};port={mySqlConnectionPort};Database={mySqlDatabaseName};user={mySqlConnectionUid};password={mySqlConnectionPassword}").UseLazyLoadingProxies();
-
-
+        
         }
+
+
+        private bool IsPostgresDatabase()
+        {
+            string url = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "localhost";
+            return !url.Equals("localhost");
+        }
+
+
         private string CreateConnectionStringFromEnvironment()
         {
             string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
