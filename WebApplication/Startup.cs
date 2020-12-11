@@ -111,7 +111,7 @@ namespace WebApplication
             });
 
 
-            if (!IsLocalServer())
+            if (!IsLocalServer() || IsPostgresDatabase())
             {
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
@@ -121,7 +121,7 @@ namespace WebApplication
                     if (!databaseCreator.HasTables())
                         databaseCreator.CreateTables();
                 }
-            }
+            } 
 
         }
 
