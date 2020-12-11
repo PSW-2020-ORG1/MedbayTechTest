@@ -138,7 +138,7 @@ namespace WebApplication
             if (url.Equals("localhost"))
                 return $"server={server};port={port};database={database};user={user};password={password}";
 
-            var databaseUri = new Uri(server);
+            var databaseUri = new Uri(url);
             var userInfo = databaseUri.UserInfo.Split(':');
 
             var builder = new NpgsqlConnectionStringBuilder
