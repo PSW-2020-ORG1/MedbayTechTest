@@ -19,6 +19,7 @@ using Backend.Reports.Model;
 using Backend.Records.Model.Enums;
 using Backend.Examinations.Model.Enums;
 using Microsoft.AspNetCore.Mvc;
+using Npgsql;
 
 namespace Model
 {
@@ -119,8 +120,24 @@ namespace Model
             string user = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "root";
             string password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "root";
 
-            return $"server={server};port={port};database={database};user={user};password={password}";
-            
+            string url = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "localhost";
+
+            if (url.Equals("localhost"))
+                return $"server={server};port={port};database={database};user={user};password={password}";
+
+            var databaseUri = new Uri(server);
+            var userInfo = databaseUri.UserInfo.Split(':');
+
+            var builder = new NpgsqlConnectionStringBuilder
+            {
+                Host = databaseUri.Host,
+                Port = databaseUri.Port,
+                Username = userInfo[0],
+                Password = userInfo[1],
+                Database = databaseUri.LocalPath.TrimStart('/')
+            };
+            return builder.ToString();
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
