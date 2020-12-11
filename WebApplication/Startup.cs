@@ -87,23 +87,30 @@ namespace WebApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            string port = Environment.GetEnvironmentVariable("PORT") ?? "4200";
 
-            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(options => options.WithOrigins($"http://*:{port}").AllowAnyMethod().AllowAnyHeader());
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseDefaultFiles();
+                app.UseStaticFiles();
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "dist"))
+                });
+            }
 
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
 
             if (!IsLocalServer() || IsPostgresDatabase())
             {
@@ -116,7 +123,6 @@ namespace WebApplication
                         databaseCreator.CreateTables();
                 }
             } 
-
         }
 
         private string CreateConnectionStringFromEnvironment()

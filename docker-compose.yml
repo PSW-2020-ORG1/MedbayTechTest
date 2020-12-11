@@ -41,29 +41,20 @@ services:
     ports:
       - "8080:8080"
 
-  WebApplicationFrontend:
-    image: stefan7/testwebfront:latest
-    container_name: web-front
+  WebApplicationProd:
+    image: webpro
+    container_name: webprod
     restart: on-failure
     networks:
       - demo
-    ports:
-      - "4200:4200"
-    links:
-      - WebApplication
-
-  PhIntegration:
-    image: ph
-    container_name: ph_adapters
-    restart: on-failure
-    networks: 
-      - demo
-    ports: 
-      - "8081:8080"
-    depends_on: 
+    depends_on:
       - mysql
     environment:
       DATABASE_USERNAME: "root"
       DATABASE_PASSWORD: "root"
       DATABASE_HOST: "mysql"
-      DATABASE_SCHEMA: "newdb"   
+      DATABASE_SCHEMA: "newdb"  
+      PORT2: "8088" 
+    ports:
+      - "8088:8088"
+      

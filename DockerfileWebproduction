@@ -1,0 +1,45 @@
+FROM node:12.2.0 as builder
+
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update && apt-get install -yq google-chrome-stable
+
+WORKDIR /app
+COPY WebApplicationFrontend/ .
+ENV PATH /app/node_modules/.bin:$PATH
+COPY WebApplicationFrontend/package.json /app/package.json
+RUN npm install
+RUN npm install -g @angular/cli@7.3.9
+COPY . /app
+
+RUN ng build --prod 
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+
+WORKDIR /app
+
+COPY Backend/Backend.csproj Backend/
+COPY WebApplication/WebApplication.csproj WebApplication/
+COPY --from=builder app/dist/ WebApplication/wwwroot/dist/
+
+RUN dotnet restore WebApplication/WebApplication.csproj
+
+COPY . .
+
+FROM build AS publish
+WORKDIR /app/Backend
+
+ENV PATH $PATH:/root/.dotnet/tools
+RUN dotnet tool install -g dotnet-ef --version 3.1.9
+RUN dotnet ef migrations add Init
+
+WORKDIR /app
+RUN dotnet publish WebApplication/WebApplication.csproj -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS runtime
+RUN useradd -ms /bin/bash defaultuser
+WORKDIR /app
+COPY --from=publish /app/out .
+
+CMD ASPNETCORE_URLS=http://*:$PORT2 dotnet WebApplication.dll
+
