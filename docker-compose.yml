@@ -36,12 +36,13 @@ services:
       DATABASE_USERNAME: "root"
       DATABASE_PASSWORD: "root"
       DATABASE_HOST: "mysql"
-      DATABASE_SCHEMA: "newdb"   
+      DATABASE_SCHEMA: "newdb"  
+      PORT: "8080" 
     ports:
       - "8080:8080"
 
   WebApplicationFrontend:
-    image: front
+    image: stefan7/testwebfront:latest
     container_name: web-front
     restart: on-failure
     networks:

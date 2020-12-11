@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Model;
+using Npgsql;
 using PharmacyIntegration.Repository;
 using PharmacyIntegration.Service;
 using System;
@@ -100,15 +101,19 @@ namespace PharmacyIntegration
 
             if (!IsLocalServer())
             {
+
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-                {
+                 {
                     var context = serviceScope.ServiceProvider.GetRequiredService<MySqlContext>();
 
                     RelationalDatabaseCreator databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
                     if (!databaseCreator.HasTables())
                         databaseCreator.CreateTables();
                 }
+                
             }
+
+
         }
 
         private string CreateConnectionStringFromEnvironment ( )
@@ -120,7 +125,6 @@ namespace PharmacyIntegration
             string password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "root";
 
             return $"server={server};port={port};database={database};user={user};password={password}";
-            ;
         }
 
         private bool IsLocalServer()
