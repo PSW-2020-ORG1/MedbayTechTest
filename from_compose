@@ -1,0 +1,17 @@
+
+  WebApplicationProd:
+    image: webpro
+    container_name: webprod
+    restart: on-failure
+    networks:
+      - demo
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_USERNAME: "root"
+      DATABASE_PASSWORD: "root"
+      DATABASE_HOST: "mysql"
+      DATABASE_SCHEMA: "newdb"  
+      PORT2: "8088" 
+    ports:
+      - "8088:8088"
