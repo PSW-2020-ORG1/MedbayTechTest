@@ -40,21 +40,3 @@ services:
       PORT: "8080" 
     ports:
       - "8080:8080"
-
-
-
-  IntegrationTest:
-    image: integration-tests
-    container_name: integration
-    restart: on-failure
-    networks:
-      - demo
-    depends_on:
-      - mysql
-    environment:
-      DATABASE_USERNAME: "root"
-      DATABASE_PASSWORD: "root"
-      DATABASE_HOST: "mysql"
-      DATABASE_SCHEMA: "newdb"  
-      PORT: "8080" 
-
