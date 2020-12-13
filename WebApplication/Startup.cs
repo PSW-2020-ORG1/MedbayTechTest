@@ -55,6 +55,18 @@ namespace WebApplication
 
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .SetIsOriginAllowed(_ => true)
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             services.AddTransient<IMailService, MailService.MailService>();
@@ -104,7 +116,7 @@ namespace WebApplication
             else
             {
                 app.UseRouting();
-                app.UseCors(options => options.AllowAnyMethod().AllowAnyHeader.SetIsOriginAllowed(_ => true).AllowCredentials());
+                app.UseCors("AllowAll");
             }
 
             app.UseAuthorization();
