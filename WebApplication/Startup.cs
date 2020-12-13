@@ -98,10 +98,6 @@ namespace WebApplication
             {
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
-                app.UseStaticFiles(new StaticFileOptions
-                {
-                    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "dist"))
-                });
                 // app.UseCors(options => options.WithOrigins("http://medbaytech.herokuapp.com:*").AllowAnyMethod().AllowAnyHeader());
                 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             }
