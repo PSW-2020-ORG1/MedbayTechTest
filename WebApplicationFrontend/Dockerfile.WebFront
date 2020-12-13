@@ -12,7 +12,7 @@ RUN npm install -g @angular/cli
 
 RUN ng build --prod
 
-FROM nginx:1.17.5:alpine
+FROM nginx:1.17.5-alpine
 
 COPY --from=builder /usr/src/app/dist/WebApplicationFrontend /usr/share/nginx/html/
 
