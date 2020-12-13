@@ -24,9 +24,9 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql:rw
 
-  WebApplication:
-    image: stefan7/testweb:latest
-    container_name: web
+  WebApplication2:
+    image: web2
+    container_name: web2
     restart: on-failure
     networks:
       - demo
@@ -41,39 +41,6 @@ services:
     ports:
       - "8080:8080"
 
-  WebApplication2:
-    image: web2
-    container_name: web2
-    restart: on-failure
-    networks:
-      - demo
-    depends_on:
-      - mysql
-    environment:
-      DATABASE_USERNAME: "root"
-      DATABASE_PASSWORD: "root"
-      DATABASE_HOST: "mysql"
-      DATABASE_SCHEMA: "newdb"  
-      PORT: "8089" 
-    ports:
-      - "8089:8089"
-
-  
-  WebApplicationFrontend:
-    image: stefan7/testwebfront:latest
-    container_name: web-front
-    restart: on-failure
-    networks:
-      - demo
-    ports:
-      - "4200:4200"
-    links:
-      - WebApplication
-
-  UnitTests:
-    image: test-unit-tests
-    container_name: unittests
-    restart: on-failure
 
 
   IntegrationTest:

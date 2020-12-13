@@ -19,7 +19,7 @@ WORKDIR /app
 
 COPY Backend/Backend.csproj Backend/
 COPY WebApplication/WebApplication.csproj WebApplication/
-COPY --from=builder app/dist/WebApplicationFrontend/ WebApplication/wwwroot/dist/
+COPY --from=builder app/dist/WebApplicationFrontend/ WebApplication/wwwroot/
 
 RUN dotnet restore WebApplication/WebApplication.csproj
 
