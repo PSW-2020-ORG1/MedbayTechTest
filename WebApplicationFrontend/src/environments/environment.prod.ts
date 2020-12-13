@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://*:$PORT/',
+  baseUrl: 'http://psw-devteam.herokuapp.com:80/',
   fedback: 'api/feedback',
   allFeedback: 'allFeedback',
   updateFeedbackStatus: 'updateFeedbackStatus',

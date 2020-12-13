@@ -87,13 +87,12 @@ namespace WebApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            string port = Environment.GetEnvironmentVariable("PORT") ?? "4200";
 
-            app.UseCors(options => options.WithOrigins($"http://*:{port}").AllowAnyMethod().AllowAnyHeader());
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
             }
             else
             {
@@ -103,6 +102,8 @@ namespace WebApplication
                 {
                     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "dist"))
                 });
+                // app.UseCors(options => options.WithOrigins("http://medbaytech.herokuapp.com:*").AllowAnyMethod().AllowAnyHeader());
+                app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             }
 
             app.UseRouting();
