@@ -88,10 +88,9 @@ namespace WebApplication
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-
-
             if (env.IsDevelopment())
             {
+                app.UseRouting();
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
 
@@ -104,10 +103,10 @@ namespace WebApplication
             }
             else
             {
-                app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+                app.UseRouting();
+                app.UseCors(options => options.AllowAnyMethod().AllowAnyHeader.SetIsOriginAllowed(_ => true).AllowCredentials());
             }
 
-            app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
