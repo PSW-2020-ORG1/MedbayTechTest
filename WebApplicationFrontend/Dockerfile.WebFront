@@ -8,8 +8,14 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build --prod
+RUN npm install -g @angular/cli
 
-FROM nginx:1.15.8-alpine
+RUN ng build --configuration production --output-path=/dist
 
-COPY --from=builder /usr/src/app/dist/WebApplicationFrontend/ /usr/share/nginx/html
+RUN npm run build --prod --output-path="dist/"
+
+FROM nginx:alpine
+
+COPY --from=builder /usr/src/app/dist/ /usr/share/nginx/html
+
+CMD ["/bin/sh", "-c", "sed -i 's/listen  .*/listen $(PORT);/g' /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"]
