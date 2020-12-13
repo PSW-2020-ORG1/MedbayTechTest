@@ -98,7 +98,7 @@ namespace WebApplication
             {
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
-                app.UseCors(options => options.WithOrigins("http://medbaytech.herokuapp.com:*").AllowAnyMethod().AllowAnyHeader());
+                app.UseCors(options => options.WithOrigins("http://medbaytech.herokuapp.com").AllowAnyMethod().AllowAnyHeader());
                 //app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             }
 
