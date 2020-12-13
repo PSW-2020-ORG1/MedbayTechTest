@@ -69,7 +69,7 @@ namespace WebApplication
         {
             if(postFeedbackDTO.AdditionalNotes.Length <= 0)
             {
-                return BadRequest("Failed to post feedback");
+                return BadRequest("Error in JSON");
             }
 
             Feedback feedbackSuccessfullyCreated = feedbackController.CreateFeedback(postFeedbackDTO.UserId, postFeedbackDTO.AdditionalNotes, postFeedbackDTO.Anonymous, postFeedbackDTO.AllowedForPublishing);
