@@ -40,9 +40,10 @@ services:
       PORT: "8080" 
     ports:
       - "8080:8080"
+
   
   WebApplicationFrontend:
-    image: webfront
+    image: stefan7/testwebfront:latest
     container_name: web-front
     restart: on-failure
     networks:
@@ -51,3 +52,25 @@ services:
       - "4200:4200"
     links:
       - WebApplication
+
+  UnitTests:
+    image: test-unit-tests
+    container_name: unittests
+    restart: on-failure
+
+
+  IntegrationTest:
+    image: integration-tests
+    container_name: integration
+    restart: on-failure
+    networks:
+      - demo
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_USERNAME: "root"
+      DATABASE_PASSWORD: "root"
+      DATABASE_HOST: "mysql"
+      DATABASE_SCHEMA: "newdb"  
+      PORT: "8080" 
+
