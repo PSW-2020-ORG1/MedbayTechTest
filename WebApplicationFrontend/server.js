@@ -7,7 +7,7 @@ const cors = require('cors');
 
 const app = express();   
 
-const whitelist = ['http://psw-devteam.herokuapp.com']; // list of allow domain
+const whitelist = ['http://psw-devteam.herokuapp.com', 'https://psw-devteam.herokuapp.com' ]; // list of allow domain
 
 
 // Serve only the static files form the dist directory    
