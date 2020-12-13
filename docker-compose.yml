@@ -41,6 +41,23 @@ services:
     ports:
       - "8080:8080"
 
+  WebApplication2:
+    image: web2
+    container_name: web2
+    restart: on-failure
+    networks:
+      - demo
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_USERNAME: "root"
+      DATABASE_PASSWORD: "root"
+      DATABASE_HOST: "mysql"
+      DATABASE_SCHEMA: "newdb"  
+      PORT: "8089" 
+    ports:
+      - "8089:8089"
+
   
   WebApplicationFrontend:
     image: stefan7/testwebfront:latest
