@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+
+using System.Linq;
 using System.Text;
 using Backend.Medications.Model;
 using Backend.Medications.Repository.FileRepository;
+using Model;
 using Repository;
 
 namespace Backend.Medications.Repository.MySqlRepository
 {
-    class MedicationSqlRepository : MySqlrepository<Medication, int>,
-        IMedicationRepository
+    public class MedicationSqlRepository : MySqlrepository<Medication, int>, IMedicationRepository
     {
-        public IEnumerable<Medication> GetAllApproved()
+        public MedicationSqlRepository(MedbayTechDbContext context) : base(context) { }
+
+        public List<Medication> GetAllApproved()
         {
-            throw new NotImplementedException();
+            return GetAll().ToList();
         }
 
-        public IEnumerable<Medication> GetAllOnValidation()
+        public List<Medication> GetAllOnValidation()
         {
-            throw new NotImplementedException();
+            return GetAll().ToList();
         }
 
-        public IEnumerable<Medication> GetAllRejected()
+        public List<Medication> GetAllRejected()
         {
-            throw new NotImplementedException();
+            return GetAll().ToList();
         }
 
         public int GetNextID()
         {
-            throw new NotImplementedException();
+            return GetAll().ToList().Count + 1;
+
         }
     }
 }

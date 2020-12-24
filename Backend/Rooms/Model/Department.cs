@@ -14,11 +14,13 @@ namespace Model.Rooms
     public class Department : IIdentifiable<int>
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get;  set; }
+
+        public string Name { get; set; }
         public int Floor { get; set; }
         [ForeignKey("Hospital")]
-        public int HospitalId { get;  set; }
+        public int HospitalId { get; set; }
         public virtual Hospital Hospital { get; set; }
 
         public Department (int id, string name, int floor, Hospital hospital)
@@ -42,6 +44,15 @@ namespace Model.Rooms
         public void SetId (int id)
         {
             Id = id;
+        }
+
+        public void UpdateDepartment(Department department)
+        {
+            Id = department.Id;
+            Name = department.Name;
+            Floor = department.Floor;
+            HospitalId = department.HospitalId;
+            Hospital = department.Hospital;
         }
     }
 }

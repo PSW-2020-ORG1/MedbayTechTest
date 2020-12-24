@@ -5,20 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Model;
 
 namespace Backend.Rooms.Repository.MySqlRepository
 {
-    class HospitalEquipmentSqlRepository : MySqlrepository<HospitalEquipment, int>,
-        IHospitalEquipmentRepository
+    public class HospitalEquipmentSqlRepository : MySqlrepository<HospitalEquipment, int>, IHospitalEquipmentRepository
     {
-        public IEnumerable<HospitalEquipment> GetEquipmentByRoomNumber(int roomNumber)
+        public HospitalEquipmentSqlRepository(MedbayTechDbContext context) : base(context) { }
+        public List<HospitalEquipment> GetEquipmentByRoomNumber(int roomNumber)
         {
-            throw new NotImplementedException();
+            return GetAll().ToList().Where(he => he.RoomId == roomNumber).ToList();
         }
-
-        public IEnumerable<HospitalEquipment> GetEquipmentByType(EquipmentType type)
+        public List<HospitalEquipment> GetEquipmentByType(EquipmentType type)
         {
-            return GetAll().ToList().Where(he => he.EquipmentTypeId.Equals(type.Id));
+            return GetAll().ToList().Where(he => he.EquipmentTypeId.Equals(type.Id)).ToList();
         }
     }
 }

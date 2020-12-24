@@ -3,12 +3,12 @@
 // Created: Saturday, April 11, 2020 11:23:56 PM
 // Purpose: Definition of Class Appointment
 
-using Model.Rooms;
-using Model.Users;
-using System;
 using Backend.General.Model;
 using Backend.Records.Model;
 using Backend.Utils;
+using Model.Rooms;
+using Model.Users;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,14 +17,20 @@ namespace Model.Schedule
     public class Appointment : IIdentifiable<int>
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [NotMapped]
         public Period Period { get; protected set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public DateTime CancelationDate { get; set; }
         public TypeOfAppointment TypeOfAppointment { get; set; }
         public string ShortDescription { get; set; }
         public bool Urgent { get; set; }
         public bool Deleted { get; set; }
         public bool Finished { get; set; }
+        public bool CanceledByPatient { get; set; }
+
         [ForeignKey("Room")]
         public int RoomId { get;  set; }
         public virtual Room Room { get; set; }
@@ -34,6 +40,9 @@ namespace Model.Schedule
         [ForeignKey("Doctor")]
         public string DoctorId { get;  set; }
         public virtual Doctor Doctor { get; set; }
+        [ForeignKey("Patient")]
+        public string PatientId { get; set; }
+        public virtual Patient Patient { get; set; }
 
         public int WeeklyAppointmentReportId { get;  set; }
 
@@ -56,12 +65,9 @@ namespace Model.Schedule
             Doctor = doctor;
             DoctorId = doctor.Id;
         }
-
-     
-        public override int GetHashCode()
+        public bool isOccupied(DateTime start, DateTime end)
         {
-            return (Period.StartTime.Year + 76) * (Period.StartTime.Day + 13) * (Period.StartTime.Hour + 17)  * (Period.StartTime.Minute + 21) * (Period.StartTime.Second  + 15) * (Period.StartTime.Month + 47)
-                + Doctor.WorkersID*25;
+            return DateTime.Compare(Start, start) == 0 && DateTime.Compare(End, end) == 0;
         }
 
         public int GetId()

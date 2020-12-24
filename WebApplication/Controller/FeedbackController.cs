@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Model.Users;
 using WebApplication.DTO;
-using WebApplicationService.GeneralService;
 using WebApplication.Adapters;
-using Backend.Users.WebApiController;
+using Backend.Users.WebApiService;
+using Backend.Users.Service.Interfaces;
 
 namespace WebApplication
 {
@@ -15,10 +15,10 @@ namespace WebApplication
     public class FeedbackController : ControllerBase
     {
 
-        private WebFeedbackController feedbackController;
-        public FeedbackController()
+        private IFeedbackService _feedbackService;
+        public FeedbackController(IFeedbackService feedbackService)
         {
-            this.feedbackController = new WebFeedbackController();
+            _feedbackService = feedbackService;
         }
         /// <summary>
         /// GET method for feedback that is approved by the system administrator
@@ -27,7 +27,7 @@ namespace WebApplication
         [HttpGet]       // GET /api/feedback
         public IActionResult Get()
         {
-            List<Feedback> approvedFeedback = feedbackController.GetAllApprovedFeedback().ToList();
+            List<Feedback> approvedFeedback = _feedbackService.GetAllApprovedFeedback().ToList();
             List<ApprovedFeedbackDTO> approvedFeedbackDTOs = FeedbackAdapter.ListApprovedFeedbackToListApprovedFeedbackDTO(approvedFeedback);
             return Ok(approvedFeedbackDTOs); 
         }
@@ -41,7 +41,7 @@ namespace WebApplication
         {
             /*List<Feedback> allFeedback = feedbackService.GetAll().ToList();
             List<AllFeedbackDTO> allFeedbackDTOs = FeedbackAdapter.ListAllFeedbackToListAllFeedbackDTO(allFeedback);*/
-            List<Feedback> allFeedback = feedbackController.GetAll().ToList();
+            List<Feedback> allFeedback = _feedbackService.GetAll().ToList();
             List<AllFeedbackDTO> allFeedbackDTOs = FeedbackAdapter.ListAllFeedbackToListAllFeedbackDTO(allFeedback);
             return Ok(allFeedbackDTOs);
         }
@@ -55,7 +55,7 @@ namespace WebApplication
         public IActionResult UpdateFeedbackStatus(UpdateFeedbackStatusDTO updateFeedbackStatusDTO)
         {
             //bool updatedStatus = feedbackService.UpdateStatus(updateFeedbackStatusDTO.Id, updateFeedbackStatusDTO.Approved);
-            bool updatedStatus = feedbackController.UpdateStatus(updateFeedbackStatusDTO.Id, updateFeedbackStatusDTO.Approved);
+            bool updatedStatus = _feedbackService.UpdateStatus(updateFeedbackStatusDTO.Id, updateFeedbackStatusDTO.Approved);
             return Ok(updatedStatus);
         }
 
@@ -72,10 +72,11 @@ namespace WebApplication
                 return BadRequest("Failed to post feedback");
             }
 
-            FeedbackService feedbackService = new FeedbackService();
-            bool feedbackSuccessfullyCreated = feedbackController.CreateFeedback(postFeedbackDTO.UserId, postFeedbackDTO.AdditionalNotes, postFeedbackDTO.Anonymous, postFeedbackDTO.AllowedForPublishing);
+           
+            Feedback feedbackSuccessfullyCreated = _feedbackService.CreateFeedback(postFeedbackDTO.UserId, postFeedbackDTO.AdditionalNotes, postFeedbackDTO.Anonymous, postFeedbackDTO.AllowedForPublishing);
 
-            if (!feedbackSuccessfullyCreated)
+
+            if (feedbackSuccessfullyCreated==null)
             {
                 return BadRequest("Failed to post feedback");
             }

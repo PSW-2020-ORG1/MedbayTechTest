@@ -18,14 +18,20 @@ namespace Model.Rooms
     public class Room : IIdentifiable<int>
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public int RoomNumber { get;  set; }
         public RoomType RoomType { get; set; }
         [ForeignKey("Department")]
         public int DepartmentId { get;  set; }
         public virtual Department Department { get; set; }
         public virtual List<HospitalEquipment> HospitalEquipment { get;  set; }
-
+        public string RoomLabel { get; set; }
+        public string RoomUse { get; set; }
+        public int BedsCapacity { get; set; }
+        public int BedsFree { get; set; }
+ 
         public Room ()
         {
         }
@@ -50,5 +56,18 @@ namespace Model.Rooms
             Id = id;
         }
 
+        public void UpdateRoom(Room room)
+        {
+            Id = room.Id;
+            RoomNumber = room.RoomNumber;
+            RoomType = room.RoomType;
+            DepartmentId = room.DepartmentId;
+            Department = room.Department;
+            HospitalEquipment = room.HospitalEquipment;
+            RoomLabel = room.RoomLabel;
+            RoomUse = room.RoomUse;
+            BedsCapacity = room.BedsCapacity;
+            BedsFree = room.BedsFree;
+        }
     }
 }

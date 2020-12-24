@@ -4,16 +4,17 @@
 // Purpose: Definition of Interface IAppointmentRepository
 
 using Model.Schedule;
-using Model.Users;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Repository.ScheduleRepository
 {
-   public interface IAppointmentRepository : IRepository<Appointment,int>
+   public interface IAppointmentRepository : ICreate<Appointment>, IGet<Appointment, int>, IDelete<Appointment>, IGetAll<Appointment>, IUpdate<Appointment>
    {
         Dictionary<int, Appointment> GetAppointmentsBy(DateTime date);
         Dictionary<int, Appointment> GetScheduledFromToday();
+        List<Appointment> GetCanceledAppointments();
+        List<Appointment> GetAppointmentsByPatientId(string Id);
+        List<Appointment> GetBy(string doctorId, DateTime date);
     }
 }

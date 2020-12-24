@@ -14,10 +14,10 @@ namespace Backend.Examinations.Model
 {
    public class Prescription : Treatment
     {
-        private const int RESERVATION_DAYS = 10;
+        private const int RESERVATION_DAYS = 10; 
         public bool Reserved { get; set; }
-        [NotMapped]
-        public Period ReservationPeriod { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public int HourlyIntake { get; set; }
         [ForeignKey("Medication")]
         public int MedicationId { get; set; }
@@ -34,7 +34,8 @@ namespace Backend.Examinations.Model
             Reserved = reserved;
             if (Reserved)
             {
-                ReservationPeriod = new Period(DateTime.Today, DateTime.Today.AddDays(RESERVATION_DAYS));
+                StartDate = DateTime.Today;
+                EndDate = DateTime.Today.AddDays(RESERVATION_DAYS);
             }
             HourlyIntake = hourlyIntake;
             Medication = medication;
@@ -42,17 +43,26 @@ namespace Backend.Examinations.Model
 
         public Prescription(int id) : base(id) { }
 
-
-        public void InitializeReservationDates()
-        {
-            if (Reserved) 
-                ReservationPeriod = new Period(DateTime.Today, DateTime.Today.AddDays(RESERVATION_DAYS));
-        }
-
         public bool IsStillActive(DateTime startDate, DateTime endDate)
         {
             return Date.CompareTo(startDate) > 0 &&
                    Date.CompareTo(endDate) < 0;
+        }
+
+        public string GetStringForSharing()
+        {
+            string result = "\t\tPRESCRIPTION\t\t" + "\n\nPatient Ifnormation\t\n" +
+                "\tName: " + ExaminationSurgery.MedicalRecord.Patient.Name +
+                "\n\tSurname: " + ExaminationSurgery.MedicalRecord.Patient.Surname +
+                "\n\tIndetification Number: " + ExaminationSurgery.MedicalRecord.Patient.Id +
+                "\n\nMedication Information" +
+                "\n\tMedication name: " + Medication.Med +
+                "\n\tDosage: " + Medication.Dosage +
+                "\n\tHourly Intake: " + HourlyIntake +
+                "\n\n\t\t\t Doctor: " +
+                "\n\t\t " + "Dr. " + ExaminationSurgery.Doctor.Surname + ", " + ExaminationSurgery.Doctor.Name +
+                "\n\t\t Date: " + Date; 
+            return result;
         }
     }
 }

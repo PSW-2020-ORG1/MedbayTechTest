@@ -8,10 +8,10 @@ using System.Text;
 
 namespace Backend.Users.Repository.MySqlRepository
 {
-    class SurveySqlRepository : MySqlrepository<Survey, int>,
+    public class SurveySqlRepository : MySqlrepository<Survey, int>,
         ISurveyRepository
     {
-        public SurveySqlRepository(MySqlContext context) : base(context) { }
+        public SurveySqlRepository(MedbayTechDbContext context) : base(context) { }
 
         public bool CheckIfExistsById(int id)
         {

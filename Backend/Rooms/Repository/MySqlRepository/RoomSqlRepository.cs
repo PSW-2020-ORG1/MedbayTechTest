@@ -1,14 +1,13 @@
 ﻿using Model.Rooms;
 using Repository;
 using Repository.RoomRepository;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Model;
 
 namespace Backend.Rooms.Repository.MySqlRepository
 {
-    class RoomSqlRepository : MySqlrepository<Room, int>,
-        IRoomRepository
+    public class RoomSqlRepository : MySqlrepository<Room, int>, IRoomRepository
     {
+        public RoomSqlRepository(MedbayTechDbContext context) : base(context) { }
+
     }
 }

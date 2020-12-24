@@ -1,4 +1,4 @@
-// File:    Hospital.cs
+﻿// File:    Hospital.cs
 // Author:  Vlajkov
 // Created: Friday, April 10, 2020 1:34:17 AM
 // Purpose: Definition of Class Hospital
@@ -9,15 +9,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Users
 {
-   public class Hospital : IIdentifiable<int>
-   {
+    public class Hospital : IIdentifiable<int>
+    {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Description { get;  set; }
-        public string Name { get;  set; }
+        public string Description { get; set; }
+        public string Name { get; set; }
         [ForeignKey("Address")]
-        public int AddressId { get;  set; }
-        public virtual Address Address { get;  set; }
+        public int AddressId { get; set; }
+        public virtual Address Address { get; set; }
 
         public Hospital() { }
 
@@ -41,4 +42,5 @@ namespace Model.Users
             Id = id;
         }
     }
-}
+
+}   

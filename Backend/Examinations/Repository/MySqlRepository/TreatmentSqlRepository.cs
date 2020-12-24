@@ -3,27 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Backend.Examinations.Model;
+using Model;
 using Repository;
 
 namespace Backend.Examinations.Repository.MySqlRepository
 {
-    class TreatmentSqlRepository : MySqlrepository<Treatment, int>,
+    public class TreatmentSqlRepository : MySqlrepository<Treatment, int>,
         ITreatmentRepository
 
     {
-        public IEnumerable<HospitalTreatment> GetAllHospitalTreatments()
+        public TreatmentSqlRepository(MedbayTechDbContext context) : base(context)
         {
-            return (IEnumerable<HospitalTreatment>) GetAll().ToList().Where(treatment => treatment.IsHospitalTreatment());
         }
 
-        public IEnumerable<Prescription> GetAllPrescriptions()
+        public List<HospitalTreatment> GetAllHospitalTreatments()
         {
-            return (IEnumerable<Prescription>)GetAll().ToList().Where(treatment => treatment.IsPrescription());
+            return (List<HospitalTreatment>) GetAll().ToList().Where(treatment => treatment.IsHospitalTreatment());
         }
 
-        public IEnumerable<Prescription> GetAllPrescriptionsInPeriod(DateTime startDate, DateTime endDate)
+        public List<Prescription> GetAllPrescriptions()
         {
-            return (IEnumerable<Prescription>)GetAll().ToList().Where(treatment => treatment.IsPrescription() 
+            return (List<Prescription>)GetAll().Where(treatment => treatment.IsPrescription());
+        }
+
+        public List<Prescription> GetAllPrescriptionsInPeriod(DateTime startDate, DateTime endDate)
+        {
+            return (List<Prescription>)GetAll().ToList().Where(treatment => treatment.IsPrescription() 
                 && ((Prescription)treatment).IsStillActive(startDate, endDate));
         }
     }

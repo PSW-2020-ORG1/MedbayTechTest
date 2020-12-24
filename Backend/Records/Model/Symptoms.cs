@@ -5,19 +5,24 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+
 using System.ComponentModel.DataAnnotations.Schema;
+
+
 using Backend.General.Model;
 
 namespace Backend.Records.Model
 {
    public class Symptoms : IIdentifiable<int>
-   {
+    {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         [ForeignKey("Diagnosis")]
         public int DiagnosisId { get; set; }
         public virtual Diagnosis Diagnosis { get; set; }
+
         public Symptoms() {
             
         }
