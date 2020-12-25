@@ -1,0 +1,11 @@
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.AssemblyInfo.cs
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.deps.json
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.runtimeconfig.json
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.runtimeconfig.dev.json
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.dll
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.pdb
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.dll
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.pdb
+C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.genruntimeconfig.cache
