@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedbayTech.Feedback", "Feedback\MedbayTech.Feedback.csproj", "{4A5E7A2D-9DFB-40FF-9BB1-338F1C595E1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedbayTech.Feedback", "MedbayTech.Feedback\MedbayTech.Feedback.csproj", "{4A5E7A2D-9DFB-40FF-9BB1-338F1C595E1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedbayTech.Repository", "MedbayTech.Repository\MedbayTech.Repository.csproj", "{CF54C2F7-E119-48FE-8241-A5246771A9D2}"
 EndProject

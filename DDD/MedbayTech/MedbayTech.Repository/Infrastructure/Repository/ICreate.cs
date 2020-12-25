@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MedbayTech.Repository.Repository
 {
-    interface ICreate<T>
+    public interface ICreate<T>
     {
         T Create(T entity);
     }

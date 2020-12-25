@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MedbayTech.Repository.Repository
 {
-    interface IExists<T, ID>
+    public interface IExists<T, ID>
     {
         bool ExistsBy(ID id);
     }

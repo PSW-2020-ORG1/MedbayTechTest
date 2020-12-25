@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MedbayTech.Repository.Repository
 {
-    interface IRepository<T, ID> : ICreate<T>, IUpdate<T>, IDelete<T>, IGetBy<T, ID>, IGetAll<T>, IExists<T, ID>
+    public interface IRepository<T, ID> : ICreate<T>, IUpdate<T>, IDelete<T>, IGetBy<T, ID>, IGetAll<T>, IExists<T, ID>
         where T : IIdentifiable<ID>
         where ID : IComparable
     {

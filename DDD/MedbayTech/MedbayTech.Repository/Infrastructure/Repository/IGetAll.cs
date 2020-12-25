@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MedbayTech.Repository.Repository
 {
-    interface IGetAll<T>
+    public interface IGetAll<T>
     {
         List<T> GetAll();
     }

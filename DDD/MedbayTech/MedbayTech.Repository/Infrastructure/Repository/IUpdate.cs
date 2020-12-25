@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MedbayTech.Repository.Repository
 {
-    interface IUpdate<T>
+    public interface IUpdate<T>
     {
         T Update(T entity);
     }

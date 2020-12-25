@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MedbayTech.Repository.Repository
 {
-    interface IGetBy<T, ID>
+    public interface IGetBy<T, ID>
     {
         T GetBy(ID id);
     }

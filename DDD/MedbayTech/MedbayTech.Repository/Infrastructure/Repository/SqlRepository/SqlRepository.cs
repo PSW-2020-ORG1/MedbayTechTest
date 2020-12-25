@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace MedbayTech.Repository.Repository.SqlRepository
 {
-    class SqlRepository<T, ID> : IRepository<T, ID>
+    public class SqlRepository<T, ID> : IRepository<T, ID>
         where T : class, IIdentifiable<ID>
         where ID : IComparable
     {
 
-        protected MyDbContext<T> context;
+        protected MyDbContext<T, ID> context;
 
         internal DbSet<T> dbSet;
 
         public SqlRepository() { }
 
-        public SqlRepository(MyDbContext<T> context)
+        public SqlRepository(MyDbContext<T, ID> context)
         {
             this.context = context;
             this.dbSet = context.Set<T>();

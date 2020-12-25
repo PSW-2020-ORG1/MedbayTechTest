@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MedbayTech.Repository.Repository
 {
-    interface IDelete<T>
+    public interface IDelete<T>
     {
         bool Delete(T entity);
     }
