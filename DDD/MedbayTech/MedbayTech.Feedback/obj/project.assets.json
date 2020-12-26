@@ -1802,7 +1802,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "MedbayTech.Repository/1.0.0": {
+      "MedbayTech.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1822,10 +1822,10 @@
           "System.Data.DataSetExtensions": "4.5.0"
         },
         "compile": {
-          "bin/placeholder/MedbayTech.Repository.dll": {}
+          "bin/placeholder/MedbayTech.Common.dll": {}
         },
         "runtime": {
-          "bin/placeholder/MedbayTech.Repository.dll": {}
+          "bin/placeholder/MedbayTech.Common.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -6350,32 +6350,33 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "MedbayTech.Repository/1.0.0": {
+    "MedbayTech.Common/1.0.0": {
       "type": "project",
-      "path": "../MedbayTech.Repository/MedbayTech.Repository.csproj",
-      "msbuildProject": "../MedbayTech.Repository/MedbayTech.Repository.csproj"
+      "path": "../MedbayTech.Repository/MedbayTech.Common.csproj",
+      "msbuildProject": "../MedbayTech.Repository/MedbayTech.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "MedbayTech.Repository >= 1.0.0",
-      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9"
+      "MedbayTech.Common >= 1.0.0",
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
+      "Newtonsoft.Json >= 12.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\wujic\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Feedback\\MedbayTech.Feedback.csproj",
+      "projectUniqueName": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Feedback\\MedbayTech.Feedback.csproj",
       "projectName": "MedbayTech.Feedback",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Feedback\\MedbayTech.Feedback.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Feedback\\obj\\",
+      "projectPath": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Feedback\\MedbayTech.Feedback.csproj",
+      "packagesPath": "C:\\Users\\wujic\\.nuget\\packages\\",
+      "outputPath": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Feedback\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wujic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6387,10 +6388,9 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Repository.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Repository.csproj"
+            "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Common.csproj": {
+              "projectPath": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Common.csproj"
             }
           }
         }
@@ -6403,11 +6403,14 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
             "target": "Package",
             "version": "[1.10.9, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
           }
         },
         "imports": [
@@ -6428,7 +6431,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

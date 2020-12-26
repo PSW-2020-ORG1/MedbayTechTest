@@ -19,10 +19,9 @@ namespace MedbayTech.Feedback.Domain.Entities
         public bool Approved { get; set; }
         public bool Anonymous { get; set; }
         public bool AllowedForPublishing { get; set; }
-        public Grade Grade { get; set; }
-        // [ForeignKey("RegisteredUser")]
-        // public string RegisteredUserId { get; set; }
-        // public virtual RegisteredUser RegisteredUser { get; set; }
+        [ForeignKey("RegisteredUser")]
+        public string UserId { get; set; }
+        public virtual User RegisteredUser { get; set; }
 
         public Feedback() { }
 
@@ -31,7 +30,6 @@ namespace MedbayTech.Feedback.Domain.Entities
             Id = id;
             Date = date;
             AdditionalNotes = additionalNotes;
-            Grade = grade;
             //RegisteredUser = user;
             //RegisteredUserId = user.Id;
             Anonymous = anonymous;

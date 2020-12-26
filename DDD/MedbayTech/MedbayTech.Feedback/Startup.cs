@@ -1,8 +1,13 @@
+using System;
+using MedbayTech.Feedback.Infrastructure.Database;
+using MedbayTech.Feedback.Infrastructure.Persistance;
+using MedbayTech.Feedback.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace MedbayTech.Feedback
 {
@@ -17,7 +22,15 @@ namespace MedbayTech.Feedback
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddDbContext<FeedbackDbContext>();
+
+            services.AddTransient<IFeedbackRepository, FeedbackRepository>();
+            services.AddScoped<IFeedbackService, FeedbackService>();
+
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,5 +51,7 @@ namespace MedbayTech.Feedback
                 endpoints.MapControllers();
             });
         }
+
+        
     }
 }

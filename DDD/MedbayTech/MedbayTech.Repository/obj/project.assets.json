@@ -6340,19 +6340,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\wujic\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Repository.csproj",
-      "projectName": "MedbayTech.Repository",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Repository.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\New folder (3)\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\obj\\",
+      "projectUniqueName": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Common.csproj",
+      "projectName": "MedbayTech.Common",
+      "projectPath": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\MedbayTech.Common.csproj",
+      "packagesPath": "C:\\Users\\wujic\\.nuget\\packages\\",
+      "outputPath": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wujic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6364,7 +6364,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -6376,7 +6375,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
@@ -6465,7 +6463,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

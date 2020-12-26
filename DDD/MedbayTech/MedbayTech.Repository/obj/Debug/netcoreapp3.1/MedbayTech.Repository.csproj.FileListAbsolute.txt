@@ -9,3 +9,15 @@ C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.R
 C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.dll
 C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.pdb
 C:\Users\Admin\Desktop\New folder (3)\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.genruntimeconfig.cache
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.deps.json
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.runtimeconfig.json
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.runtimeconfig.dev.json
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.dll
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\bin\Debug\netcoreapp3.1\MedbayTech.Repository.pdb
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.csprojAssemblyReference.cache
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.AssemblyInfoInputs.cache
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.AssemblyInfo.cs
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.csproj.CoreCompileInputs.cache
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.dll
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.pdb
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Repository\obj\Debug\netcoreapp3.1\MedbayTech.Repository.genruntimeconfig.cache

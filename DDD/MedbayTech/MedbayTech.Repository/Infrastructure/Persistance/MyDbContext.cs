@@ -9,6 +9,8 @@ namespace MedbayTech.Repository.Infrastructure.Persistance
         where ID : IComparable
     {
         public MyDbContext(DbContextOptions<MyDbContext<T, ID>> options) : base(options) { }
+
+        public MyDbContext() {}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (IsPostgres())
@@ -27,7 +29,7 @@ namespace MedbayTech.Repository.Infrastructure.Persistance
         {
             string server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
             string port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "3306";
-            string database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "newdb";
+            string database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "newdb20";
             string user = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "root";
             string password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "root";
 
