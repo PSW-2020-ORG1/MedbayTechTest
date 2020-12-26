@@ -1,0 +1,2 @@
+obj\Debug\netcoreapp3.1/Model.cs \
+obj\Debug\netcoreapp3.1/ModelGrpc.cs: gRPC/Protos/model.proto

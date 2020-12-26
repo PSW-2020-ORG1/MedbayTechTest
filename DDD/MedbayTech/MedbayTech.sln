@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedbayTech.Users", "MedbayT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedbayTech.APIGateway", "MedbayTech.APIGateway\MedbayTech.APIGateway.csproj", "{01C399CC-4576-4BD0-B991-5F73C2D08CDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedbayTech.Appointment", "MedbayTech.Appointment\MedbayTech.Appointment.csproj", "{B8C7A65E-6C05-494E-9932-4A09C40485DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{01C399CC-4576-4BD0-B991-5F73C2D08CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C399CC-4576-4BD0-B991-5F73C2D08CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C399CC-4576-4BD0-B991-5F73C2D08CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C7A65E-6C05-494E-9932-4A09C40485DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C7A65E-6C05-494E-9932-4A09C40485DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C7A65E-6C05-494E-9932-4A09C40485DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C7A65E-6C05-494E-9932-4A09C40485DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
