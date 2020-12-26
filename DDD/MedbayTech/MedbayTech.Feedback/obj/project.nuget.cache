@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KxcLQB/oZYGp4G8hhMEgTtH4zK1dTTmTIppNM7bQX0I3fXlbhbKWXpsKIA2flMVg3zl1bg/CiLXMkTjAlFemOA==",
+  "dgSpecHash": "lVrv6Tc5GrnB0Eqzw2XLcceCtH1vP8czZlojr6i4F/v3lp7GZa6Lf6MBug9T7mTGtURWsIAs/XEhscuzC9gHGA==",
   "success": true,
   "projectFilePath": "D:\\Fakultet\\Godina 4\\Semestar 1\\Projektovanje softvera\\ProjekatTestRepo\\MedbayTechTest\\DDD\\MedbayTech\\MedbayTech.Feedback\\MedbayTech.Feedback.csproj",
   "expectedPackageFiles": [
@@ -13,8 +13,10 @@
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.9\\microsoft.entityframeworkcore.3.1.9.nupkg.sha512",
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.9\\microsoft.entityframeworkcore.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.9\\microsoft.entityframeworkcore.analyzers.3.1.9.nupkg.sha512",
+    "C:\\Users\\wujic\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.9\\microsoft.entityframeworkcore.design.3.1.9.nupkg.sha512",
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\3.1.9\\microsoft.entityframeworkcore.proxies.3.1.9.nupkg.sha512",
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.9\\microsoft.entityframeworkcore.relational.3.1.9.nupkg.sha512",
+    "C:\\Users\\wujic\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.9\\microsoft.entityframeworkcore.tools.3.1.9.nupkg.sha512",
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.9\\microsoft.extensions.caching.abstractions.3.1.9.nupkg.sha512",
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.9\\microsoft.extensions.caching.memory.3.1.9.nupkg.sha512",
     "C:\\Users\\wujic\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",

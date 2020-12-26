@@ -112,3 +112,4 @@ D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTe
 D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Feedback\obj\Debug\netcoreapp3.1\MedbayTech.Feedback.MvcApplicationPartsAssemblyInfo.cache
 D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Feedback\bin\Debug\netcoreapp3.1\MedbayTech.Common.dll
 D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Feedback\bin\Debug\netcoreapp3.1\MedbayTech.Common.pdb
+D:\Fakultet\Godina 4\Semestar 1\Projektovanje softvera\ProjekatTestRepo\MedbayTechTest\DDD\MedbayTech\MedbayTech.Feedback\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

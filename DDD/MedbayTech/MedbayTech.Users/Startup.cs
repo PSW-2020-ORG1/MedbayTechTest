@@ -57,6 +57,22 @@ namespace MedbayTech.Users
             {
                 endpoints.MapControllers();
             });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<UserDbContext>())
+            {
+                try
+                {
+                    UserDataSeeder seeder = new UserDataSeeder();
+                    if(!seeder.IsAlreadyFull(context))
+                        seeder.SeedAllEntities(context);
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Failed to seed data");
+                }
+            }
         }
     }
 }

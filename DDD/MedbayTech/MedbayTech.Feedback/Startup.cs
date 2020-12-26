@@ -45,13 +45,26 @@ namespace MedbayTech.Feedback
             app.UseRouting();
 
             app.UseAuthorization();
-            
-            app.UseEndpoints(endpoints =>
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<FeedbackDbContext>())
             {
-                endpoints.MapControllers();
-            });
+                try
+                {
+                    FeedbackDataSeeder seeder = new FeedbackDataSeeder();
+                    if(!seeder.IsAlreadyFull(context))
+                        seeder.SeedAllEntities(context);
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Failed to seed data");
+                }
+            }
         }
 
-        
+
     }
 }

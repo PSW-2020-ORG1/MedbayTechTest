@@ -20,7 +20,7 @@ namespace MedbayTech.Feedback.Infrastructure.Persistance.Configurations
             builder.Property(f => f.Anonymous).HasColumnName("Anonymous");
             builder.Property(f => f.Approved).HasColumnName("Approved");
             builder.Property(f => f.Date).HasColumnName("Date");
-           
+
         }
     }
 }
