@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
-namespace MedbayTech.APIGateway
+namespace MedbayTech.APIGateways
 {
     public class Startup
     {
@@ -34,8 +34,10 @@ namespace MedbayTech.APIGateway
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
             });
-            app.UseOcelot();
+
+             app.UseOcelot();
         }
     }
 }

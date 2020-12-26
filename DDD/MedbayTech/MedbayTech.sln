@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedbayTech.Common", "Medbay
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedbayTech.Users", "MedbayTech.Users\MedbayTech.Users.csproj", "{AFB3F48D-BED8-4DB5-90F9-99227988D557}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedbayTech.APIGateway", "MedbayTech.APIGateways\MedbayTech.APIGateway.csproj", "{01C399CC-4576-4BD0-B991-5F73C2D08CDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedbayTech.APIGateway", "MedbayTech.APIGateway\MedbayTech.APIGateway.csproj", "{01C399CC-4576-4BD0-B991-5F73C2D08CDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

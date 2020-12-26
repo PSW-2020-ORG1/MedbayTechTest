@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace MedbayTech.APIGateway
+namespace MedbayTech.APIGateways
 {
     public class Program
     {
@@ -21,10 +21,9 @@ namespace MedbayTech.APIGateway
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        config.AddJsonFile("ocelot.json");
-                    });
+                }).ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddJsonFile("ocelot.json");
+                });
     }
 }
