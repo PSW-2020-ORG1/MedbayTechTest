@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,8 +9,5 @@
     <PackageReference Include="Ocelot" Version="16.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="..\.dockerignore" />
-  </ItemGroup>
 
 </Project>
