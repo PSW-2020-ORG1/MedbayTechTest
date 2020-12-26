@@ -30,6 +30,21 @@
       ]
     },
     {
+      "DownstreamPathTemplate": "/api/feedback/createFeedback",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080 
+        }
+      ],
+      "UpstreamPathTemplate": "/feedback/createFeedback",
+      "UpstreamHttpMethod": [
+        "POST",
+        "OPTIONS"
+      ]
+    },
+    {
       "DownstreamPathTemplate": "/api/feedback",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

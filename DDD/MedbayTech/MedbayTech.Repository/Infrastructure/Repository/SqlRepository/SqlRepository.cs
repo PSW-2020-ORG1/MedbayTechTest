@@ -34,7 +34,7 @@ namespace MedbayTech.Repository.Repository.SqlRepository
             if (!ExistsBy(entity.GetId()))
             {
                 dbSet.Add(entity);
-                context.SaveChangesAsync();
+                context.SaveChanges();
                 return entity;
             }
             return null;
@@ -52,7 +52,7 @@ namespace MedbayTech.Repository.Repository.SqlRepository
                 if (context.Entry(entity).State == EntityState.Detached)
                     dbSet.Attach(entity);
                 dbSet.Remove(entity);
-                context.SaveChangesAsync();
+                context.SaveChanges();
                 return true;
             }
             return false;
@@ -103,7 +103,7 @@ namespace MedbayTech.Repository.Repository.SqlRepository
             {
                 dbSet.Attach(entity);
                 context.Entry(entity).State = EntityState.Modified;
-                context.SaveChangesAsync();
+                context.SaveChanges();
                 return entity;
             }
             return null;

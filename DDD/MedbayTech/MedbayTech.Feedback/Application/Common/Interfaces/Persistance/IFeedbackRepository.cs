@@ -11,9 +11,6 @@ namespace MedbayTech.Feedback.Infrastructure.Database
     {
         bool UpdateStatus(int feedbackId, bool status);
         List<Domain.Entities.Feedback> GetAllApprovedFeedback();
-
-        int GetLastId();
-
         bool CheckIfExists(Domain.Entities.Feedback feedback);
     }
 }

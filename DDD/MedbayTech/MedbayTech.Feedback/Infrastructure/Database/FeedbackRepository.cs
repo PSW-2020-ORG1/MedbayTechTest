@@ -30,12 +30,6 @@ namespace MedbayTech.Feedback.Infrastructure.Database
             return GetAll().ToList().Where(f => f.Approved & f.AllowedForPublishing).ToList();
         }
 
-        public int GetLastId()
-        {
-            Domain.Entities.Feedback feedback = GetAll().Last();
-            return feedback.Id;
-        }
-
         public bool CheckIfExists(Domain.Entities.Feedback feedback)
         {
             return GetBy(feedback.Id) == null ? false : true;

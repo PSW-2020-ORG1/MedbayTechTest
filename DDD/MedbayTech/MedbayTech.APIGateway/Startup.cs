@@ -19,6 +19,19 @@ namespace MedbayTech.APIGateways
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                            .SetIsOriginAllowed(_ => true)
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,8 +49,8 @@ namespace MedbayTech.APIGateways
                 endpoints.MapControllers();
 
             });
-
-             app.UseOcelot();
+            app.UseCors("AllowAll");
+            app.UseOcelot();
         }
     }
 }

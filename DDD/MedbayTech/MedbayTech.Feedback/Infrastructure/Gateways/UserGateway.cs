@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using MedbayTech.Feedback.Application.Common.Interfaces.Gateways;
 using MedbayTech.Feedback.Domain.Entities;
 using Newtonsoft.Json;
 
 
 namespace MedbayTech.Feedback.Infrastructure.Gateways
 {
-    public class RestClient
+    public class UserGateway : IUserGateway
     {
 
         private List<User> users { get; set; }
@@ -30,7 +31,7 @@ namespace MedbayTech.Feedback.Infrastructure.Gateways
 
         }
 
-        private string GetUsersDomain()
+        public string GetUsersDomain()
         {
             string origin = Environment.GetEnvironmentVariable("URL") ?? "localhost";
             string port = Environment.GetEnvironmentVariable("PORT") ?? "8081";
