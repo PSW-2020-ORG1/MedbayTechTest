@@ -14,11 +14,11 @@ namespace MedbayTech.Feedback.Controllers
     public class Users : ControllerBase
     {
 
-        private readonly RestClient _restClient;
+        private readonly UserGateway _restClient;
 
         public Users()
         {
-            _restClient = new RestClient();
+            _restClient = new UserGateway();
         }
 
         [HttpGet]

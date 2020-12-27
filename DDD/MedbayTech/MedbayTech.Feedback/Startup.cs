@@ -1,5 +1,7 @@
 using System;
+using MedbayTech.Feedback.Application.Common.Interfaces.Gateways;
 using MedbayTech.Feedback.Infrastructure.Database;
+using MedbayTech.Feedback.Infrastructure.Gateways;
 using MedbayTech.Feedback.Infrastructure.Persistance;
 using MedbayTech.Feedback.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
@@ -30,7 +32,9 @@ namespace MedbayTech.Feedback
             services.AddTransient<IFeedbackRepository, FeedbackRepository>();
             services.AddScoped<IFeedbackService, FeedbackService>();
 
-            
+            services.AddScoped<IUserGateway, UserGateway>();
+
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

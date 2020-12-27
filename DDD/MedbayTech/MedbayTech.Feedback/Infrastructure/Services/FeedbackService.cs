@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MedbayTech.Feedback.Application.Common.Interfaces.Gateways;
 using MedbayTech.Feedback.Domain.Entities;
 using MedbayTech.Feedback.Infrastructure.Database;
 using MedbayTech.Feedback.Infrastructure.Gateways;
@@ -13,17 +14,18 @@ namespace MedbayTech.Feedback.Infrastructure.Services
     {
         private IFeedbackRepository feedbackRepository;
 
-        private RestClient _restClient;
-        public FeedbackService(IFeedbackRepository feedbackRepository)
+        private IUserGateway _userGateway;
+
+        public FeedbackService(IFeedbackRepository feedbackRepository, IUserGateway userGateway)
         {
             this.feedbackRepository = feedbackRepository;
-            _restClient = new RestClient();
+            _userGateway = userGateway;
         }
 
         public List<Domain.Entities.Feedback> GetAll()
         {
             List<Domain.Entities.Feedback> allFeedback = feedbackRepository.GetAll().ToList();
-            List<User> users = _restClient.GetUsers();
+            List<User> users = _userGateway.GetUsers();
             allFeedback.ForEach(f => f.RegisteredUser = users.FirstOrDefault(u => f.UserId != null && u.Id.Equals(f.UserId)));
 
             return allFeedback;
